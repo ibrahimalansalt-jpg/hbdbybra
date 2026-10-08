@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌑 Black Hole Birthday - Monochrome Edition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Cinzel:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rajdhani', sans-serif;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+  }
+
+  /* ============================================
+     SPACE BACKGROUND - MONOCHROME
+     ============================================ */
+  .space {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 50%, #000 80%);
+  }
+
+  .starfield {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 1; }
+  }
+
+  /* ============================================
+     BLACK HOLE - MONOCHROME
+     ============================================ */
+  .blackhole-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Accretion Disk - Abu-abu berputar */
+  .accretion-disk {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(200, 200, 200, 0.5) 40deg,
+      rgba(255, 255, 255, 0.7) 80deg,
+      rgba(150, 150, 150, 0.5) 120deg,
+      transparent 180deg,
+      rgba(180, 180, 180, 0.6) 220deg,
+      rgba(220, 220, 220, 0.7) 270deg,
+      transparent 360deg
+    );
+    filter: blur(20px);
+    animation: rotateDisk 12s linear infinite;
+    box-shadow: 
+      0 0 100px rgba(200, 200, 200, 0.5),
+      0 0 200px rgba(150, 150, 150, 0.3);
+  }
+
+  .accretion-disk-2 {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 180deg,
+      transparent 0deg,
+      rgba(255, 255, 255, 0.8) 60deg,
+      rgba(180, 180, 180, 0.7) 120deg,
+      transparent 180deg,
+      rgba(220, 220, 220, 0.8) 240deg,
+      rgba(140, 140, 140, 0.6) 300deg,
+      transparent 360deg
+    );
+    filter: blur(15px);
+    animation: rotateDisk 8s linear infinite reverse;
+    box-shadow: 
+      0 0 80px rgba(255, 255, 255, 0.4),
+      inset 0 0 80px rgba(200, 200, 200, 0.3);
+  }
+
+  @keyframes rotateDisk {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Event Horizon - Cahaya putih di tepi */
+  .event-horizon {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #000;
+    box-shadow:
+      0 0 40px 15px rgba(255, 255, 255, 0.9),
+      0 0 80px 30px rgba(200, 200, 200, 0.7),
+      0 0 150px 60px rgba(150, 150, 150, 0.5),
+      0 0 250px 100px rgba(80, 80, 80, 0.3),
+      inset 0 0 60px 20px #000,
+      inset 0 0 120px 40px rgba(0, 0, 0, 1);
+    animation: horizonPulse 4s ease-in-out infinite;
+    z-index: 3;
+  }
+
+  @keyframes horizonPulse {
+    0%, 100% {
+      box-shadow:
+        0 0 40px 15px rgba(255, 255, 255, 0.9),
+        0 0 80px 30px rgba(200, 200, 200, 0.7),
+        0 0 150px 60px rgba(150, 150, 150, 0.5),
+        0 0 250px 100px rgba(80, 80, 80, 0.3),
+        inset 0 0 60px 20px #000,
+        inset 0 0 120px 40px rgba(0, 0, 0, 1);
+    }
+    50% {
+      box-shadow:
+        0 0 60px 25px rgba(255, 255, 255, 1),
+        0 0 120px 50px rgba(220, 220, 220, 0.9),
+        0 0 200px 80px rgba(180, 180, 180, 0.7),
+        0 0 320px 140px rgba(100, 100, 100, 0.5),
+        inset 0 0 60px 20px #000,
+        inset 0 0 120px 40px rgba(0, 0, 0, 1);
+    }
+  }
+
+  .singularity {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #000;
+    z-index: 4;
+    box-shadow: inset 0 0 80px 40px #000;
+  }
+
+  /* Photon Ring - Putih berputar */
+  .photon-ring {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: rgba(255, 255, 255, 1);
+    border-right-color: rgba(220, 220, 220, 0.9);
+    border-bottom-color: rgba(180, 180, 180, 0.8);
+    border-left-color: rgba(240, 240, 240, 0.9);
+    filter: blur(2px);
+    animation: rotateDisk 5s linear infinite;
+    z-index: 5;
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.8),
+      inset 0 0 30px rgba(200, 200, 200, 0.6);
+  }
+
+  /* ============================================
+     PARTIKEL
+     ============================================ */
+  .particle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  /* ============================================
+     PANEL / CARD
+     ============================================ */
+  .stage {
+    position: relative;
+    z-index: 10;
+    width: 92%;
+    max-width: 720px;
+    perspective: 1400px;
+  }
+
+  .panel {
+    position: relative;
+    background:
+      linear-gradient(145deg, rgba(15, 15, 15, 0.92), rgba(25, 25, 25, 0.95));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(200, 200, 200, 0.35);
+    border-radius: 24px;
+    padding: 48px 48px 52px;
+    box-shadow:
+      0 0 60px rgba(255, 255, 255, 0.15),
+      0 0 120px rgba(150, 150, 150, 0.1),
+      inset 0 0 80px rgba(0, 0, 0, 0.6);
+    display: none;
+    animation: panelIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    transform-style: preserve-3d;
+  }
+
+  .panel.active { display: block; }
+
+  /* Sudut dekoratif */
+  .panel::before, .panel::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(230, 230, 230, 0.7);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  }
+  .panel::before {
+    top: -2px; left: -2px;
+    border-right: none; border-bottom: none;
+    border-radius: 24px 0 0 0;
+  }
+  .panel::after {
+    bottom: -2px; right: -2px;
+    border-left: none; border-top: none;
+    border-radius: 0 0 24px 0;
+  }
+
+  @keyframes panelIn {
+    from { opacity: 0; transform: rotateX(-15deg) translateY(40px) scale(0.94); }
+    to { opacity: 1; transform: rotateX(0) translateY(0) scale(1); }
+  }
+
+  /* ============================================
+     HEADER
+     ============================================ */
+  .cosmic-header {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .cosmic-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    color: #a0a0a0;
+    text-shadow: 0 0 15px rgba(200, 200, 200, 0.6);
+    margin-bottom: 8px;
+  }
+
+  .cosmic-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #fff, #d0d0d0, #808080, #e8e8e8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShine 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+  }
+
+  @keyframes titleShine {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+
+  /* ============================================
+     STEP INDICATOR
+     ============================================ */
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px 0 28px;
+  }
+
+  .step-dot {
+    width: 42px;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+  }
+
+  .step-dot.active {
+    background: linear-gradient(90deg, #fff, #b0b0b0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+  }
+
+  .step-dot.done {
+    background: #c0c0c0;
+    box-shadow: 0 0 10px rgba(200, 200, 200, 0.6);
+  }
+
+  /* ============================================
+     TEXT
+     ============================================ */
+  .step-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  .step-sub {
+    text-align: center;
+    color: #909090;
+    font-size: 0.92rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+
+  /* ============================================
+     INPUT
+     ============================================ */
+  .input-group {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .input-group label {
+    display: block;
+    color: #d0d0d0;
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  }
+
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(20, 20, 20, 0.7);
+    border: 1.5px solid rgba(200, 200, 200, 0.3);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    outline: none;
+    transition: all 0.3s ease;
+    resize: none;
+  }
+
+  .input-group input:focus,
+  .input-group textarea:focus {
+    border-color: #e0e0e0;
+    box-shadow:
+      0 0 25px rgba(255, 255, 255, 0.4),
+      inset 0 0 20px rgba(255, 255, 255, 0.05);
+    background: rgba(30, 30, 30, 0.85);
+  }
+
+  .input-group input::placeholder,
+  .input-group textarea::placeholder {
+    color: rgba(180, 180, 180, 0.4);
+    font-weight: 300;
+  }
+
+  .input-group textarea {
+    min-height: 130px;
+    line-height: 1.6;
+  }
+
+  /* ============================================
+     BUTTON
+     ============================================ */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px 30px;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #000;
+    background: linear-gradient(135deg, #ffffff, #e0e0e0, #b0b0b0);
+    background-size: 200% auto;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 0 30px rgba(255, 255, 255, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    background-position: right center;
+    box-shadow:
+      0 0 50px rgba(255, 255, 255, 0.6),
+      0 12px 35px rgba(0, 0, 0, 0.6);
+  }
+
+  .btn:active { transform: translateY(0) scale(0.98); }
+
+  .btn.secondary {
+    background: rgba(30, 30, 30, 0.8);
+    border: 1.5px solid rgba(200, 200, 200, 0.4);
+    color: #e0e0e0;
+    box-shadow: none;
+  }
+
+  .btn.secondary:hover {
+    background: rgba(50, 50, 50, 0.9);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .btn-row .btn { margin-top: 0; }
+
+  /* ============================================
+     FINAL PAGE
+     ============================================ */
+  .final-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .cosmic-badge {
+    display: inline-block;
+    padding: 7px 22px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+    box-shadow:
+      0 0 25px rgba(255, 255, 255, 0.3),
+      inset 0 0 15px rgba(255, 255, 255, 0.1);
+    margin-bottom: 22px;
+    animation: badgeGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes badgeGlow {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1); }
+    50% { box-shadow: 0 0 45px rgba(255, 255, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.2); }
+  }
+
+  .name-display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #c0c0c0, #808080, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
+    margin-bottom: 8px;
+    line-height: 1.2;
+    animation: titleShine 4s ease-in-out infinite;
+  }
+
+  .bday-text {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    color: #e8e8e8;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+  }
+
+  .wish-card {
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.8));
+    border: 1.5px solid rgba(200, 200, 200, 0.35);
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin: 25px 0;
+    position: relative;
+    box-shadow:
+      0 0 40px rgba(255, 255, 255, 0.1),
+      inset 0 0 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .wish-card::before {
+    content: '「 HARAPAN 」';
+    position: absolute;
+    top: -11px;
+    left: 25px;
+    background: #0a0a0a;
+    padding: 0 14px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+  }
+
+  .wish-text {
+    color: #e0e0e0;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    font-style: italic;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* ============================================
+     CONFETTI
+     ============================================ */
+  .confetti {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* ============================================
+     ADMIN PANEL
+     ============================================ */
+  .admin-trigger {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1.5px solid rgba(200, 200, 200, 0.4);
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    opacity: 0.3;
+  }
+
+  .admin-trigger:hover {
+    opacity: 1;
+    transform: scale(1.15) rotate(180deg);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    background: rgba(40, 40, 40, 0.9);
+  }
+
+  /* Modal Admin */
+  .admin-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .admin-modal.show { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .admin-content {
+    background: linear-gradient(145deg, rgba(15, 15, 15, 0.98), rgba(30, 30, 30, 0.98));
+    border: 1.5px solid rgba(200, 200, 200, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow:
+      0 0 80px rgba(255, 255, 255, 0.2),
+      inset 0 0 60px rgba(0, 0, 0, 0.5);
+    animation: modalIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.25);
+  }
+
+  .admin-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+
+  .admin-close {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .admin-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+    color: #fff;
+  }
+
+  .admin-login {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .admin-login p {
+    color: #a0a0a0;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .admin-pin-input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1.5px solid rgba(200, 200, 200, 0.4);
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+  }
+
+  .admin-pin-input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+
+  .admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .stat-card {
+    background: rgba(25, 25, 25, 0.7);
+    border: 1px solid rgba(200, 200, 200, 0.25);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .wish-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .wish-item {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.7));
+    border: 1px solid rgba(200, 200, 200, 0.2);
+    border-left: 3px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: all 0.3s ease;
+    animation: itemIn 0.5s ease backwards;
+  }
+
+  .wish-item:hover {
+    border-left-color: #fff;
+    transform: translateX(5px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  }
+
+  @keyframes itemIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .wish-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .wish-item-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  }
+
+  .wish-item-date {
+    font-size: 0.75rem;
+    color: #808080;
+    letter-spacing: 1px;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .wish-item-text {
+    color: #d0d0d0;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    font-style: italic;
+    word-wrap: break-word;
+  }
+
+  .wish-item-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(200, 200, 200, 0.15);
+  }
+
+  .wish-action-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    color: #d0d0d0;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .wish-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .wish-action-btn.delete {
+    color: #b0b0b0;
+    border-color: rgba(200, 200, 200, 0.3);
+  }
+
+  .wish-action-btn.delete:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #808080;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .empty-state .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+  }
+
+  .admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200, 200, 200, 0.25);
+  }
+
+  .admin-actions .btn {
+    font-size: 0.75rem;
+    padding: 12px 20px;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 600px) {
+    .panel { padding: 32px 22px 38px; border-radius: 20px; }
+    .cosmic-title { font-size: 1.15rem; letter-spacing: 2px; }
+    .step-title { font-size: 1.05rem; letter-spacing: 1.5px; }
+    .step-sub { font-size: 0.82rem; }
+    .name-display { font-size: 1.6rem; }
+    .bday-text { font-size: 0.95rem; letter-spacing: 3px; }
+    .wish-card { padding: 20px 18px; }
+    .wish-text { font-size: 0.92rem; }
+    .btn { font-size: 0.82rem; letter-spacing: 2px; padding: 14px 20px; }
+    .step-dot { width: 30px; height: 4px; }
+    .btn-row { flex-direction: column; }
+    .blackhole-wrapper { width: 600px; height: 600px; }
+    .accretion-disk { width: 400px; height: 400px; }
+    .accretion-disk-2 { width: 300px; height: 300px; }
+    .event-horizon { width: 180px; height: 180px; }
+    .singularity { width: 120px; height: 120px; }
+    .photon-ring { width: 165px; height: 165px; }
+    .admin-content { padding: 22px; }
+    .admin-title { font-size: 0.9rem; letter-spacing: 2px; }
+    .stat-value { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SPACE BACKGROUND -->
+<div class="space">
+  <div class="starfield" id="starfield"></div>
+
+  <div class="blackhole-wrapper">
+    <div class="accretion-disk"></div>
+    <div class="accretion-disk-2"></div>
+    <div class="event-horizon"></div>
+    <div class="photon-ring"></div>
+    <div class="singularity"></div>
+  </div>
+</div>
+
+<div class="admin-trigger" onclick="openAdmin()" title="Admin Access">⚙</div>
+
+<div class="stage">
+
+  <!-- STEP 1 -->
+  <div class="panel active" id="step1">
+    <div class="cosmic-header">
+      <div class="cosmic-label">◈ CELESTIAL REGISTRY ◈</div>
+      <div class="cosmic-title">BLACK HOLE WISHES</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <h2 class="step-title">SIAPA NAMAMU?</h2>
+    <p class="step-sub">// Daftarkan namamu ke dalam singularitas //</p>
+
+    <div class="input-group">
+      <label>✦ Nama Kamu ✦</label>
+      <input type="text" id="inputName" placeholder="Ketik namamu di sini..." maxlength="40" autocomplete="off">
+    </div>
+
+    <button class="btn" onclick="goToStep2()">Masuk ke Event Horizon →</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="panel" id="step2">
+    <div class="cosmic-header">
+      <div class="cosmic-label">◈ CELESTIAL REGISTRY ◈</div>
+      <div class="cosmic-title">BLACK HOLE WISHES</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <h2 class="step-title">HARAPAN TAHUN INI</h2>
+    <p class="step-sub">// Tulis harapanmu, biarkan alam semesta membacanya //</p>
+
+    <div class="input-group">
+      <label>✦ Harapan & Impian ✦</label>
+      <textarea id="inputWish" placeholder="Tuliskan harapanmu di tahun ini... biarkan black hole menyimpannya untuk semesta..." maxlength="500"></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn secondary" onclick="goToStep1()">← Kembali</button>
+      <button class="btn" onclick="goToStep3()">Lanjut →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="panel" id="step3">
+    <div class="cosmic-header">
+      <div class="cosmic-label">◈ CELESTIAL REGISTRY ◈</div>
+      <div class="cosmic-title">BLACK HOLE WISHES</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-dot done"></div>
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+    </div>
+
+    <div class="final-header">
+      <div class="cosmic-badge">★ COSMIC CELEBRATION ★</div>
+    </div>
+
+    <div class="name-display" id="displayName">—</div>
+    <div class="bday-text">SELAMAT ULANG TAHUN</div>
+
+    <div class="wish-card">
+      <div class="wish-text" id="displayWish">—</div>
+    </div>
+
+    <button class="btn" style="margin-top:15px;" onclick="celebrate()">🌌 Rayakan Bersama Semesta 🌌</button>
+    <button class="btn secondary" style="margin-top:12px;" onclick="resetAll()">↻ Ulangi dari Awal</button>
+  </div>
+
+</div>
+
+<!-- ADMIN MODAL -->
+<div class="admin-modal" id="adminModal">
+  <div class="admin-content">
+    <div class="admin-header">
+      <div class="admin-title">◈ ADMIN ACCESS ◈</div>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <div class="admin-login" id="adminLogin">
+      <p>Masukkan PIN untuk mengakses arsip harapan semesta</p>
+      <input type="password" class="admin-pin-input" id="adminPin" placeholder="• • • • • •" maxlength="6" inputmode="numeric">
+      <button class="btn" onclick="verifyPin()">Verifikasi Akses</button>
+    </div>
+
+    <div id="adminDashboard" style="display:none;">
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-value" id="statTotal">0</div>
+          <div class="stat-label">Total Harapan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statToday">0</div>
+          <div class="stat-label">Hari Ini</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statUnique">0</div>
+          <div class="stat-label">Orang Unik</div>
+        </div>
+      </div>
+
+      <div class="wish-list" id="wishList"></div>
+
+      <div class="admin-actions">
+        <button class="btn secondary" onclick="exportWishes()">📥 Export Data</button>
+        <button class="btn secondary" onclick="clearAllWishes()">🗑 Hapus Semua</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ADMIN_PIN = '231006'; // Ganti sesuai keinginan
+  const STORAGE_KEY = 'blackhole_birthday_wishes';
+
+  // STARFIELD
+  (function createStars() {
+    const field = document.getElementById('starfield');
+    for (let i = 0; i < 250; i++) {
+      const s = document.createElement('div');
+      s.classList.add('star');
+      const size = Math.random() * 2.5 + 0.5;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.opacity = Math.random() * 0.8 + 0.2;
+      s.style.animationDelay = Math.random() * 4 + 's';
+      s.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      field.appendChild(s);
+    }
+  })();
+
+  // PARTIKEL KE BLACK HOLE (warna monochrome)
+  function spawnParticle() {
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 500 + Math.random() * 300;
+    const startX = cx + Math.cos(angle) * distance;
+    const startY = cy + Math.sin(angle) * distance;
+
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const shades = ['#ffffff', '#e0e0e0', '#c0c0c0', '#a0a0a0', '#808080'];
+    const color = shades[Math.floor(Math.random() * shades.length)];
+    p.style.background = color;
+    p.style.color = color;
+    p.style.left = startX + 'px';
+    p.style.top = startY + 'px';
+    p.style.boxShadow = `0 0 10px ${color}`;
+    document.body.appendChild(p);
+
+    const duration = 3000 + Math.random() * 2000;
+    const startTime = performance.now();
+
+    function animate(now) {
+      const elapsed = now - startTime;
+      const t = Math.min(elapsed / duration, 1);
+      const eased = t * t;
+
+      const currentX = startX + (cx - startX) * eased;
+      const currentY = startY + (cy - startY) * eased;
+      const spiralAngle = angle + t * Math.PI * 4;
+      const spiralRadius = (1 - t) * 30;
+      const spiralX = currentX + Math.cos(spiralAngle) * spiralRadius;
+      const spiralY = currentY + Math.sin(spiralAngle) * spiralRadius;
+
+      p.style.left = spiralX + 'px';
+      p.style.top = spiralY + 'px';
+      p.style.opacity = 1 - t * 0.7;
+      p.style.transform = `scale(${1 - t * 0.5})`;
+
+      if (t < 1) requestAnimationFrame(animate);
+      else p.remove();
+    }
+    requestAnimationFrame(animate);
+  }
+  setInterval(spawnParticle, 180);
+
+  // NAVIGASI
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById(id);
+    panel.classList.add('active');
+    panel.style.animation = 'none';
+    void panel.offsetWidth;
+    panel.style.animation = 'panelIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards';
+  }
+
+  function goToStep1() { showPanel('step1'); }
+
+  function goToStep2() {
+    const name = document.getElementById('inputName').value.trim();
+    if (!name) { shakeElement(document.getElementById('inputName')); return; }
+    showPanel('step2');
+    setTimeout(() => document.getElementById('inputWish').focus(), 400);
+  }
+
+  function goToStep3() {
+    const name = document.getElementById('inputName').value.trim();
+    const wish = document.getElementById('inputWish').value.trim();
+    if (!wish) { shakeElement(document.getElementById('inputWish')); return; }
+
+    saveWish(name, wish);
+    document.getElementById('displayName').textContent = name;
+    document.getElementById('displayWish').textContent = wish;
+    showPanel('step3');
+    setTimeout(celebrate, 600);
+  }
+
+  function resetAll() {
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputWish').value = '';
+    showPanel('step1');
+  }
+
+  function shakeElement(el) {
+    el.style.borderColor = '#fff';
+    el.style.boxShadow = '0 0 25px rgba(255, 255, 255, 0.9)';
+    el.animate([
+      { transform: 'translateX(0)' },
+      { transform: 'translateX(-10px)' },
+      { transform: 'translateX(10px)' },
+      { transform: 'translateX(-8px)' },
+      { transform: 'translateX(8px)' },
+      { transform: 'translateX(0)' }
+    ], { duration: 400, easing: 'ease-in-out' });
+    setTimeout(() => {
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+    }, 500);
+  }
+
+  // STORAGE
+  function saveWish(name, wish) {
+    const wishes = getWishes();
+    wishes.push({
+      id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+      name, wish,
+      date: new Date().toISOString()
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+  }
+
+  function getWishes() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch (e) { return []; }
+  }
+
+  function deleteWish(id) {
+    const wishes = getWishes().filter(w => w.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+    renderWishList();
+    updateStats();
+  }
+
+  function clearAllWishes() {
+    if (confirm('⚠ Yakin ingin menghapus SEMUA data harapan?')) {
+      localStorage.removeItem(STORAGE_KEY);
+      renderWishList();
+      updateStats();
+    }
+  }
+
+  function exportWishes() {
+    const wishes = getWishes();
+    if (wishes.length === 0) { alert('Tidak ada data.'); return; }
+    let text = '🌑 BLACK HOLE WISHES - ARCHIVE 🌑\n';
+    text += '═══════════════════════════════════\n';
+    text += `Total: ${wishes.length} harapan\n`;
+    text += `Export: ${new Date().toLocaleString('id-ID')}\n`;
+    text += '═══════════════════════════════════\n\n';
+    wishes.forEach((w, i) => {
+      text += `${i + 1}. ${w.name}\n`;
+      text += `   📅 ${new Date(w.date).toLocaleString('id-ID')}\n`;
+      text += `   💭 ${w.wish}\n\n───────────────────────────────────\n\n`;
+    });
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `blackhole-wishes-${Date.now()}.txt`;
+    a.click();
+  }
+
+  // ADMIN
+  function openAdmin() {
+    document.getElementById('adminModal').classList.add('show');
+    document.getElementById('adminPin').value = '';
+    document.getElementById('adminLogin').style.display = 'block';
+    document.getElementById('adminDashboard').style.display = 'none';
+    setTimeout(() => document.getElementById('adminPin').focus(), 300);
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminModal').classList.remove('show');
+  }
+
+  function verifyPin() {
+    const pin = document.getElementById('adminPin').value;
+    if (pin === ADMIN_PIN) {
+      document.getElementById('adminLogin').style.display = 'none';
+      document.getElementById('adminDashboard').style.display = 'block';
+      renderWishList();
+      updateStats();
+    } else {
+      const input = document.getElementById('adminPin');
+      input.style.borderColor = '#fff';
+      input.style.boxShadow = '0 0 25px rgba(255, 255, 255, 0.9)';
+      input.value = '';
+      input.placeholder = 'PIN SALAH!';
+      input.animate([
+        { transform: 'translateX(0)' },
+        { transform: 'translateX(-10px)' },
+        { transform: 'translateX(10px)' },
+        { transform: 'translateX(0)' }
+      ], { duration: 300 });
+      setTimeout(() => {
+        input.style.borderColor = '';
+        input.style.boxShadow = '';
+        input.placeholder = '• • • • • •';
+      }, 1500);
+    }
+  }
+
+  function updateStats() {
+    const wishes = getWishes();
+    const today = new Date().toDateString();
+    const todayCount = wishes.filter(w => new Date(w.date).toDateString() === today).length;
+    const uniqueNames = new Set(wishes.map(w => w.name.toLowerCase())).size;
+    document.getElementById('statTotal').textContent = wishes.length;
+    document.getElementById('statToday').textContent = todayCount;
+    document.getElementById('statUnique').textContent = uniqueNames;
+  }
+
+  function renderWishList() {
+    const container = document.getElementById('wishList');
+    const wishes = getWishes();
+    if (wishes.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="icon">🌑</div>
+          <p>Belum ada harapan yang tersimpan...</p>
+        </div>`;
+      return;
+    }
+    const sorted = [...wishes].sort((a, b) => new Date(b.date) - new Date(a.date));
+    container.innerHTML = sorted.map((w, i) => {
+      const date = new Date(w.date);
+      const dateStr = date.toLocaleString('id-ID', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+      return `
+        <div class="wish-item" style="animation-delay:${i * 0.04}s">
+          <div class="wish-item-header">
+            <div class="wish-item-name">◈ ${escapeHtml(w.name)}</div>
+            <div class="wish-item-date">${dateStr}</div>
+          </div>
+          <div class="wish-item-text">${escapeHtml(w.wish)}</div>
+          <div class="wish-item-actions">
+            <button class="wish-action-btn" onclick="copyWish('${w.id}')">📋 Copy</button>
+            <button class="wish-action-btn delete" onclick="deleteWish('${w.id}')">🗑 Hapus</button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function copyWish(id) {
+    const w = getWishes().find(x => x.id === id);
+    if (!w) return;
+    const text = `${w.name} — ${new Date(w.date).toLocaleString('id-ID')}\n\n${w.wish}`;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✓ Harapan berhasil dicopy!');
+    }).catch(() => alert('Gagal copy.'));
+  }
+
+  function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  // CELEBRATE (monochrome confetti)
+  function celebrate() {
+    const colors = ['#ffffff', '#e0e0e0', '#c0c0c0', '#a0a0a0', '#808080', '#606060'];
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+
+    for (let i = 0; i < 150; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.classList.add('confetti');
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 8 + 4;
+        c.style.width = size + 'px';
+        c.style.height = size + 'px';
+        c.style.background = color;
+        c.style.boxShadow = `0 0 15px ${color}`;
+        c.style.left = cx + 'px';
+        c.style.top = cy + 'px';
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 400 + 200;
+        const vx = Math.cos(angle) * velocity;
+        const vy = Math.sin(angle) * velocity;
+        const duration = 1500 + Math.random() * 1500;
+        const startTime = performance.now();
+
+        function animate(now) {
+          const t = Math.min((now - startTime) / duration, 1);
+          const x = vx * t;
+          const y = vy * t + 400 * t * t;
+          c.style.transform = `translate(${x}px, ${y}px) scale(${1 - t * 0.5})`;
+          c.style.opacity = 1 - t;
+          if (t < 1) requestAnimationFrame(animate);
+          else c.remove();
+        }
+        requestAnimationFrame(animate);
+        document.body.appendChild(c);
+      }, i * 12);
+    }
+
+    // Suara melodi
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AudioCtx();
+      const notes = [
+        [264, 0.3], [264, 0.3], [297, 0.6], [264, 0.6], [352, 0.6], [330, 0.9],
+        [264, 0.3], [264, 0.3], [297, 0.6], [264, 0.6], [396, 0.6], [352, 0.9],
+        [264, 0.3], [264, 0.3], [528, 0.6], [440, 0.6], [352, 0.6], [330, 0.6], [297, 0.9],
+        [466, 0.3], [466, 0.3], [440, 0.6], [352, 0.6], [396, 0.6], [352, 1.2]
+      ];
+      let t = ctx.currentTime + 0.1;
+      notes.forEach(([f, d]) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = f;
+        gain.gain.setValueAtTime(0.1, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + d);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + d);
+        t += d;
+      });
+    } catch (e) {}
+  }
+
+  // EVENTS
+  document.getElementById('inputName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') goToStep2();
+  });
+  document.getElementById('adminPin').addEventListener('keydown', e => {
+    if (e.key === 'Enter') verifyPin();
+  });
+  document.getElementById('adminModal').addEventListener('click', e => {
+    if (e.target.id === 'adminModal') closeAdmin();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAdmin();
+  });
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('inputName').focus(), 600);
+  });
+
+  console.log('%c🌑 BLACK HOLE BIRTHDAY — MONOCHROME EDITION', 'color:#fff;font-size:16px;font-weight:bold;text-shadow:0 0 15px #fff');
+  console.log('%c⚙ Admin: klik tombol ⚙ di kanan atas (PIN: 231006)', 'color:#c0c0c0;font-size:12px');
+</script>
+</body>
+</html>
